@@ -1,14 +1,13 @@
-### How to run file Frontend 
-#### install angular về máy<br>
-__Bước 1: Cài đặt Node.js__<br>
-__Angular__ yêu cầu __Node.js__ để chạy. Nếu bạn chưa cài Node.js, hãy tải về và cài đặt:<br>
--1.Truy cập trang web Node.js: https://nodejs.org<br>
--2.Tải phiên bản LTS (Long Term Support) và cài đặt.<br>
-__Bước 2: Cài đặt Angular CLI__<br>
--1.mở terminal và run lệnh<br>
--2.`npm install -g @angular/cli`<br>
-#### run file frontend <br>
--để chạy frontend sau khi clone về đó mở `terminal`
--gõ lệnh `npm install` __(1)__ để download các package của angular và<br>
--`npm i boostrap` __(2)__  <br>
--sau đó để chạy thì `ng serve`<br>
+# QL_BanDienThoai
+Bước 1: Cài đặt Node.js
+Angular yêu cầu Node.js để chạy. Nếu bạn chưa cài Node.js, hãy tải về và cài đặt:
+-1.Truy cập trang web Node.js: https://nodejs.org
+-2.Tải phiên bản LTS (Long Term Support) và cài đặt.
+Bước 2: Cài đặt Angular CLI
+-1.mở terminal và run lệnh
+-2.npm install -g @angular/cli
+
+run file frontend
+-để chạy frontend sau khi clone về đó mở terminal -gõ lệnh npm install (1) để download các package của angular và
+-npm i boostrap (2)
+-sau đó để chạy thì ng serve
