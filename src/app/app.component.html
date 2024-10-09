@@ -1,0 +1,28 @@
+<!-- app-layout.component.html -->
+<div class="app-container">
+  <header >
+    <div class="header">
+      <div>LOGO</div>
+      <div>Hãng điện thoại</div>
+      <div class="search-bar">
+        <input type="text" placeholder="Tìm kiếm sản phẩm" />
+        <button><i class="bi bi-search"></i></button>
+      </div>
+      <div routerLink="/cart" class="icons">
+        <i class="bi bi-cart"></i>
+      </div>
+      <div routerLink="/newpass" class="icons">
+        <i class="bi bi-person"></i>
+      </div>
+    </div>
+  </header>
+  <main class="main-content">
+      <router-outlet></router-outlet>
+  </main>
+  <footer >
+    <div class="footer">
+      <div>Thông tin chung</div>
+      <div>Liên kết MXH</div>
+    </div>
+  </footer>
+</div>

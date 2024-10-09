@@ -1,0 +1,99 @@
+// order.component.scss
+body {
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  border: 1px solid #000;
+}
+
+.left, .right {
+  width: 48%;
+}
+h2{
+  align-items: center;
+}
+.left input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #000;
+  box-sizing: border-box;
+}
+
+.left .payment-method {
+  margin-bottom: 10px;
+}
+
+.left .payment-method button {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #000;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.right {
+  border: 1px solid #000;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.right .item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.right .item div {
+  width: 24%;
+  text-align: center;
+  border: 1px solid #000;
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+.right .total, .right .shipping, .right .grand-total {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.right .total div, .right .shipping div, .right .grand-total div {
+  width: 48%;
+  text-align: center;
+  border: 1px solid #000;
+  padding: 5px;
+  box-sizing: border-box;
+}
+.total-input{
+  background-color: #959090;
+}
+.right .total .total-label{
+  border: none;
+}
+.right .shipping .total-label{
+  border: none;
+}
+.right .grand-total .total-label{
+  border: none;
+}
+
+// .right .grand-total {
+//   background-color: #000;
+//   color: #fff;
+// }
+
+.right .order-button {
+  text-align: center;
+}
+
+.right .order-button button {
+  padding: 10px 20px;
+  border: 1px solid #000;
+  background-color: #fff;
+  cursor: pointer;
+}

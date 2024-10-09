@@ -1,0 +1,47 @@
+
+<div class="container">
+  <div class="sidebar">
+    <h3>Hãng sản xuất</h3>
+    <label><input type="checkbox"/> Apple</label>
+    <label><input type="checkbox"/> Sam sung</label>
+    <label><input type="checkbox"/> Xiaomi</label>
+    <label><input type="checkbox"/> Vivo</label>
+    <h3>Ram</h3>
+    <label><input type="checkbox"/> 4 GB</label>
+    <label><input type="checkbox"/> 8 GB</label>
+    <h3>Bộ nhớ</h3>
+    <label><input type="checkbox"/> 64 GB</label>
+    <label><input type="checkbox"/> 128 GB</label>
+    <label><input type="checkbox"/> 256 GB</label>
+    <h3>Giá</h3>
+    <label><input type="checkbox"/> Dưới 5 tr</label>
+    <label><input type="checkbox"/> Từ 5tr - 10tr</label>
+    <label><input type="checkbox"/> Trên 10 tr</label>
+    <div class="buttons">
+      <button>Bỏ lọc</button>
+      <button>Lọc</button>
+    </div>
+  </div>
+  <div class="main-content">
+    <div class="sort">
+      <span>Sắp xếp theo:</span>
+      <select>
+        <option>Giá thấp -> cao</option>
+        <option>Giá cao -> thấp</option>
+      </select>
+    </div>
+    <div class="products">
+      <div class="product" *ngFor="let product of products">
+        <img alt="Hình ảnh điện thoại" height="100" [src]="product.image" width="150"/>
+        <p>{{ product.name }}</p>
+        <p>{{ product.price }}</p>
+        <i class="bi bi-cart"></i>
+      </div>
+    </div>
+    <div class="pagination">
+      <span>&lt;</span>
+      <span *ngFor="let page of pages">{{ page }}</span>
+      <span>&gt;</span>
+    </div>
+  </div>
+</div>

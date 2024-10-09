@@ -1,0 +1,29 @@
+<!-- cart.component.html -->
+<div class="cart-item" *ngFor="let item of cartItems">
+  <img alt="Placeholder image of a phone" src="https://storage.googleapis.com/a1aa/image/6D2hftFYKXXVICz2kabEPazqR6O7U5kjxX3cVGCG38xg5qxJA.jpg" />
+  <div>
+    {{ item.name }}
+  </div>
+  <div>
+    {{ item.price | currency }}
+  </div>
+  <div>
+    {{ item.quantity }}
+  </div>
+  <div>
+    {{ item.price * item.quantity | currency }}
+  </div>
+  <div class="remove" (click)="removeItem(item)">
+    <i class="bi bi-x-circle"></i> <!-- Bootstrap icon -->
+  </div>
+</div>
+
+<div class="total">
+  <label for="total">Tổng tiền:</label>
+  <input id="total" type="text" [value]="totalAmount | currency" readonly />
+</div>
+<div class="actions">
+  <a class="btn btn-secondary">Tiếp tục mua hàng</a>
+  <button class="btn btn-primary">Cập nhật</button>
+  <button routerLink="/order" class="btn btn-success">Thanh toán</button>
+</div>
