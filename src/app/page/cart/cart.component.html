@@ -1,29 +1,39 @@
 <!-- cart.component.html -->
-<div class="cart-item" *ngFor="let item of cartItems">
-  <img alt="Placeholder image of a phone" src="https://storage.googleapis.com/a1aa/image/6D2hftFYKXXVICz2kabEPazqR6O7U5kjxX3cVGCG38xg5qxJA.jpg" />
-  <div>
-    {{ item.name }}
+<div class="container">
+  <div class="left">
+    <h2>Thông tin giao hàng</h2>
+    <input placeholder="Họ và tên..." type="text" />
+    <input placeholder="Số điện thoại..." type="text" />
+    <input placeholder="Địa chỉ..." type="text" />
+    <div class="payment-method">
+      <h2>Phương thức thanh toán</h2>
+      <button>Thanh toán khi nhận hàng</button>
+    </div>
   </div>
-  <div>
-    {{ item.price | currency }}
+  <div class="right">
+    <div class="item" *ngFor="let item of cartItems">
+      <div>
+        <img alt="Product Image" height="50" [src]="item.imageUrl" width="50" />
+      </div>
+      <div>{{ item.name }}</div>
+      <div>{{ item.price | currency }}</div>
+      <div>{{ item.quantity }}</div>
+      <div>{{ item.price * item.quantity | currency }}</div>
+    </div>
+    <div class="total">
+      <div class="total-label">Tổng tiền hàng</div>
+      <div class="total-input">{{ totalAmount | currency }}</div>
+    </div>
+    <div class="shipping">
+      <div class="total-label" >Phí vận chuyển</div>
+      <div class="total-input">{{ shippingCost | currency }}</div>
+    </div>
+    <div class="grand-total">
+      <div class="total-label">Tổng thanh toán</div>
+      <div class="total-input">{{ grandTotal | currency }}</div>
+    </div>
+    <div class="cart-button">
+      <button (click)="placeOrder()">Đặt Hàng</button>
+    </div>
   </div>
-  <div>
-    {{ item.quantity }}
-  </div>
-  <div>
-    {{ item.price * item.quantity | currency }}
-  </div>
-  <div class="remove" (click)="removeItem(item)">
-    <i class="bi bi-x-circle"></i> <!-- Bootstrap icon -->
-  </div>
-</div>
-
-<div class="total">
-  <label for="total">Tổng tiền:</label>
-  <input id="total" type="text" [value]="totalAmount | currency" readonly />
-</div>
-<div class="actions">
-  <a class="btn btn-secondary">Tiếp tục mua hàng</a>
-  <button class="btn btn-primary">Cập nhật</button>
-  <button routerLink="/order" class="btn btn-success">Thanh toán</button>
 </div>

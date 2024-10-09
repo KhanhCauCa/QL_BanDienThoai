@@ -10,37 +10,43 @@ interface CartItem {
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.scss'] // Đảm bảo bạn đã sử dụng styleUrls thay vì styleUrl
+  styleUrls: ['./cart.component.scss'], // Đảm bảo bạn đã sử dụng styleUrls thay vì styleUrl
 })
 export class CartComponent {
-  cartItems: CartItem[] = [
+  cartItems = [
     {
-      name: 'Điện thoại A',
-      price: 10000000,
-      quantity: 1
+      name: 'Sản phẩm 1',
+      price: 100000,
+      quantity: 1,
+      imageUrl:
+        'https://storage.googleapis.com/a1aa/image/u8BVDWoX43YtO5oPGgpIGPZsZ7cyAQkfJomIGYUZ5smqBrxJA.jpg',
     },
     {
-      name: 'Điện thoại B',
-      price: 15000000,
-      quantity: 2
-    }
+      name: 'Sản phẩm 2',
+      price: 150000,
+      quantity: 2,
+      imageUrl:
+        'https://storage.googleapis.com/a1aa/image/u8BVDWoX43YtO5oPGgpIGPZsZ7cyAQkfJomIGYUZ5smqBrxJA.jpg',
+    },
   ];
 
   get totalAmount(): number {
-    return this.cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
+    return this.cartItems.reduce(
+      (total, item) => total + item.price * item.quantity,
+      0
+    );
   }
 
-  removeItem(item: CartItem): void {
-    this.cartItems = this.cartItems.filter(cartItem => cartItem !== item);
+  get shippingCost(): number {
+    return 20000; // Ví dụ phí vận chuyển
   }
 
-  updateCart(): void {
-    // Thực hiện logic cập nhật giỏ hàng tại đây
-    console.log('Giỏ hàng đã được cập nhật:', this.cartItems);
+  get grandTotal(): number {
+    return this.totalAmount + this.shippingCost;
   }
 
-  checkout(): void {
-    // Thực hiện logic thanh toán tại đây
-    console.log('Thanh toán thành công với tổng tiền:', this.totalAmount);
+  placeOrder(): void {
+    alert('Đặt hàng thành công!');
+    // Logic xử lý đặt hàng
   }
 }

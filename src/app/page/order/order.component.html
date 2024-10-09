@@ -1,39 +1,130 @@
-<!-- order.component.html -->
-<div class="container">
-  <div class="left">
-    <h2>Thông tin giao hàng</h2>
-    <input placeholder="Họ và tên..." type="text" />
-    <input placeholder="Số điện thoại..." type="text" />
-    <input placeholder="Địa chỉ..." type="text" />
-    <div class="payment-method">
-      <h2>Phương thức thanh toán</h2>
-      <button>Thanh toán khi nhận hàng</button>
-    </div>
+<div class="main-content">
+  <div class="sidebar">
+    <button routerLink="/newpass" class="btn btn-light">Thông tin tài khoản</button>
+    <button routerLink="/order" class="btn btn-light">Đơn hàng</button>
+    <button class="btn btn-light">Đổi mật khẩu</button>
+    <button routerLink="/login" class="btn btn-danger">Đăng xuất</button>
   </div>
-  <div class="right">
-    <div class="item" *ngFor="let item of cartItems">
+
+  <div class="order-content" *ngIf="!showOrderDetails">
+    <h1>Đơn hàng của tôi</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Mã đơn hàng</th>
+          <th>Ngày đặt</th>
+          <th>Trạng thái</th>
+          <th>Vận chuyển</th>
+          <th>Tổng tiền</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of orders" (click)="viewOrderDetails(order)">
+          <td>
+            <span class="order-id">{{ order.id }}</span>
+          </td>
+          <td>
+            <span class="order-date">{{ order.date }}</span>
+          </td>
+          <td>
+            <span class="order-status">{{ order.status }}</span>
+          </td>
+          <td>
+            <span class="order-shipping">{{ order.ship }}</span>
+          </td>
+          <td>
+            <span class="order-total">{{
+              order.price | currency : "VND"
+            }}</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="showOrderDetails">
+    <div class=" order-details">
+      <h1>Đơn hàng</h1>
+
       <div>
-        <img alt="Product Image" height="50" [src]="item.imageUrl" width="50" />
+        <label for="orderNumber">Đơn hàng:</label>
+        <input
+          type="text"
+          id="orderNumber"
+          name="orderNumber"
+          [(ngModel)]="selectedOrder.id"
+          readonly
+        />
       </div>
-      <div>{{ item.name }}</div>
-      <div>{{ item.price | currency }}</div>
-      <div>{{ item.quantity }}</div>
-      <div>{{ item.price * item.quantity | currency }}</div>
-    </div>
-    <div class="total">
-      <div class="total-label">Tổng tiền hàng</div>
-      <div class="total-input">{{ totalAmount | currency }}</div>
-    </div>
-    <div class="shipping">
-      <div class="total-label" >Phí vận chuyển</div>
-      <div class="total-input">{{ shippingCost | currency }}</div>
-    </div>
-    <div class="grand-total">
-      <div class="total-label">Tổng thanh toán</div>
-      <div class="total-input">{{ grandTotal | currency }}</div>
-    </div>
-    <div class="order-button">
-      <button (click)="placeOrder()">Đặt Hàng</button>
+
+      <div>
+        <label for="orderTime">Đặt lúc:</label>
+        <input
+          type="text"
+          id="orderTime"
+          name="orderTime"
+          [(ngModel)]="selectedOrder.date"
+          readonly
+        />
+      </div>
+
+      <div>
+        <label for="customerName">Họ tên:</label>
+        <input
+          type="text"
+          id="customerName"
+          name="customerName"
+          [(ngModel)]="selectedOrder.customerName"
+          readonly
+        />
+      </div>
+
+      <div>
+        <label for="phoneNumber">Số điện thoại:</label>
+        <input
+          type="text"
+          id="phoneNumber"
+          name="phoneNumber"
+          [(ngModel)]="selectedOrder.phoneNumber"
+          readonly
+        />
+      </div>
+
+      <div>
+        <label for="address">Địa chỉ:</label>
+        <input
+          type="text"
+          id="address"
+          name="address"
+          [(ngModel)]="selectedOrder.address"
+          readonly
+        />
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Sản phẩm</th>
+            <th>Giá</th>
+            <th>Số lượng</th>
+            <th>Thành tiền</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of selectedOrder.items">
+            <td>
+              <input type="text" [(ngModel)]="item.productName" readonly />
+            </td>
+            <td><input type="number" [(ngModel)]="item.price" readonly /></td>
+            <td>
+              <input type="number" [(ngModel)]="item.quantity" readonly />
+            </td>
+            <td>{{ item.price * item.quantity | currency : "VND" }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <button (click)="backToOrders()">Quay lại</button>
     </div>
   </div>
 </div>

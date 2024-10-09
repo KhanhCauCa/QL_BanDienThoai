@@ -6,36 +6,64 @@ import { Component } from '@angular/core';
   styleUrls: ['./order.component.scss']
 })
 export class OrderComponent {
-  // Dữ liệu mẫu cho giỏ hàng
-  cartItems = [
+  orders = [
     {
-      name: 'Sản phẩm 1',
-      price: 100000,
-      quantity: 1,
-      imageUrl: 'https://storage.googleapis.com/a1aa/image/u8BVDWoX43YtO5oPGgpIGPZsZ7cyAQkfJomIGYUZ5smqBrxJA.jpg'
+      id: 1,
+      date: '2022-01-01',
+      status: 'Đang giao hàng',
+      ship: 'Giao hàng tận nơi',
+      price: 1000000,
+      customerName: 'Nguyễn Văn A',
+      phoneNumber: '0123456789',
+      address: '123 Đường ABC',
+      items: [
+        { productName: 'Sản phẩm 1', price: 500000, quantity: 2 },
+        { productName: 'Sản phẩm 2', price: 300000, quantity: 1 }
+      ]
     },
     {
-      name: 'Sản phẩm 2',
-      price: 150000,
-      quantity: 2,
-      imageUrl: 'https://storage.googleapis.com/a1aa/image/u8BVDWoX43YtO5oPGgpIGPZsZ7cyAQkfJomIGYUZ5smqBrxJA.jpg'
-    }
+      id: 2,
+      date: '2022-01-15',
+      status: 'Đã giao hàng',
+      ship: 'Giao hàng tận nơi',
+      price: 2000000,
+      customerName: 'Trần Thị B',
+      phoneNumber: '0987654321',
+      address: '456 Đường XYZ',
+      items: [
+        { productName: 'Sản phẩm 3', price: 1000000, quantity: 1 },
+        { productName: 'Sản phẩm 4', price: 200000, quantity: 5 }
+      ]
+    },
+    {
+      id: 3,
+      date: '2022-02-01',
+      status: 'Đang giao hàng',
+      ship: 'Giao hàng tận nơi',
+      price: 3000000,
+      customerName: 'Nguyễn Văn C',
+      phoneNumber: '0123456789',
+      address: '789 Đường QWE',
+      items: [
+        { productName: 'Sản phẩm 5', price: 1500000, quantity: 2 }
+      ]
+    },
   ];
 
-  get totalAmount(): number {
-    return this.cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
+  selectedOrder: any;
+  showOrderDetails = false;
+
+  constructor() { }
+
+  ngOnInit(): void {
   }
 
-  get shippingCost(): number {
-    return 20000; // Ví dụ phí vận chuyển
+  viewOrderDetails(order: any) {
+    this.selectedOrder = order;
+    this.showOrderDetails = true;
   }
 
-  get grandTotal(): number {
-    return this.totalAmount + this.shippingCost;
-  }
-
-  placeOrder(): void {
-    alert('Đặt hàng thành công!');
-    // Logic xử lý đặt hàng
+  backToOrders() {
+    this.showOrderDetails = false;
   }
 }
